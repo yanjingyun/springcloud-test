@@ -51,5 +51,6 @@
     <module>service-consumer-feign</module>
     <module>service-consumer-ribbon-hystrix</module>
     <module>service-consumer-feign-hystrix</module>
+    <module>service-zuul</module>
   </modules>
 </project>

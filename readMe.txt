@@ -32,4 +32,15 @@ spring-cloud-test：
 		hello testAA，I am from port：2001
 		hello testAA，I am from port：2002
 
+4.路由转发和过滤器(zuul)
+	路由转发：比如输入/api/user转发到到user服务,/api/shop转发到shop服务。
+	测试：
+		分别启动：注册中心、启动2次端口不同的服务提供者、服务消费者service-consumer-ribbon、服务消费者service-consumer-feign、路由转发service-zuul
+		分别输入：
+			http://localhost:4001/api-a/hi?name=testAA #该请求转发给service-consumer-ribbon服务
+			http://localhost:4001/api-b/hi?name=testAA #该请求转发给service-consumer-feign服务
+	测试过滤器：
+		分别输入：
+			http://localhost:4001/api-a/hi?name=testAA #该请求转发给service-consumer-ribbon服务
+			http://localhost:4001/api-b/hi?name=testAA #请求被拦截
 
