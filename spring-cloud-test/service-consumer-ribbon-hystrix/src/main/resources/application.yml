@@ -1,9 +1,9 @@
 server:
-  port: 2001
+  port: 3003
 
 spring:
   application:
-    name: service-provider
+    name: service-consumer-ribbon
 
 eureka:
   client:

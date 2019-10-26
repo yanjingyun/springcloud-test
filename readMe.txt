@@ -23,5 +23,13 @@ spring-cloud-test：
 			hello testAA，I am from port：2002
 			hello testAA，I am from port：2002
 
+3.断路器(hystrix)
+	测试1：改造service-consumer-ribbon成为service-consumer-ribbon-hystrix
+	测试2：改造service-consumer-feign成为service-consumer-feign-hystrix
+
+	输入：http://localhost:3004/hi?name=testAA
+		testAA sorry error!	--可能会出现
+		hello testAA，I am from port：2001
+		hello testAA，I am from port：2002
 
 

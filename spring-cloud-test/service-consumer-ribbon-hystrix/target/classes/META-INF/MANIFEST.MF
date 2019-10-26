@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: service-consumer-ribbon-hystrix
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: user
+Implementation-Vendor-Id: com.yjy
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://maven.apache.org/service-consumer-ribbon-hy
+ strix
+Created-By: Maven Integration for Eclipse
+

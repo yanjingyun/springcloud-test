@@ -49,5 +49,7 @@
 		<module>service-provider</module>
     <module>service-consumer-ribbon</module>
     <module>service-consumer-feign</module>
+    <module>service-consumer-ribbon-hystrix</module>
+    <module>service-consumer-feign-hystrix</module>
   </modules>
 </project>
