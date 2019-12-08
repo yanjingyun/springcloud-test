@@ -10,13 +10,14 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableDiscoveryClient
+@EnableDiscoveryClient //1.向服务注册中心注册自己
 public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 	
+	// 2.注入restTemplate类，通过@LoadBalanced表明该restTemplate开启负载均衡的功能
 	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate() {
