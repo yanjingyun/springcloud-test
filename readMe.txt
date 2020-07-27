@@ -1,4 +1,19 @@
+
+服务的注册与发现(eureka server && eureka client)
+服务消费者(rest+ribbon 或 feign)
+断路器(hystrix)
+路由网关(zuul)
+分布式配置中心(Spring Cloud Config)
+高可用的分布式配置中心(Spring Cloud Config)
+消息总线(Spring Cloud Bus)
+路由网关(Spring Cloud Gateway)
+
+
+
+
+
 spring-cloud-test：
+	--项目参考教程：https://github.com/forezp/SpringCloudLearning
 	测试服务注册中心、服务提供者、服务消费者、断路器、路由转发、配置中心、消息总线、网关
 
 1.服务注册中心与服务提供者(eureka)：
@@ -46,6 +61,11 @@ spring-cloud-test：
 3.断路器(hystrix)
 	测试1：改造service-consumer-ribbon成为service-consumer-ribbon-hystrix
 	测试2：改造service-consumer-feign成为service-consumer-feign-hystrix
+		1）在application.properties中添加配置
+			feign.hystrix.enabled=true
+		2）创建fallback类，继承HelloRemote并实现回调方法
+		3）@FeignClient中添加fallback属性
+			@FeignClient(name= "SPRING-CLOUD-PRODUCER", fallback = HelloRemoteFallBack.class)
 
 	输入：http://localhost:3004/hi?name=testAA
 		testAA sorry error!	--可能会出现
@@ -66,9 +86,11 @@ spring-cloud-test：
 
 
 分布式配置中心(config)	--未测试
-	--为了将配置文件统一管理
+	描述：分布式系统的服务数量巨多，为了将配置文件统一管理，实时更新，需要配置中心组件。
+	--相关依赖：
 	spring-cloud-config-server	#服务端
 	spring-cloud-starter-config #客户端
+	描述：config-client从config-server 中获取 foo 的属性值，而config-server是从git仓库读取。
 消息总线(bus)
 	配置中心修改了某个属性值，此时客户端会发送一个消息，由消息总线向其他服务传递，从而使整个微服务集群都达到更新配置文件。
 
