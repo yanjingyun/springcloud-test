@@ -106,3 +106,51 @@ spring-cloud-test：
 		作为系统的前端边界，外部流量只能通过网关才能访问系统
 		可以在网关层做权限的判断
 		可以在网关层做缓存
+
+
+
+
+********************************************************************
+spring-cloud-test01 //测试eureka的注册中心和服务注册功能
+	先启动eureka-server，再启动service-provider01，能看到在注册中心已经注册 service-provider01 服务
+	注册中心：http://localhost:1001/
+	服务提供方：http://localhost:2001/hi?name=testAA
+
+
+spring-cloud-test02 //测试服务调用
+	项目基于spring-cloud-test01
+	ribbon版：新增service-consumer-ribbon项目
+		启动注册中心eureka-server
+		启动服务提供者：service-provider01，修改端口后再次启动，做一个集群。
+		启动服务消费者：service-consumer-ribbon
+		发送http://localhost:3001/hi?name=testAA，能看到会循环调用200x的请求
+
+	feign版：新增service-consumer-feign项目
+		启动注册中心eureka-server
+		启动服务提供者：service-provider01，修改端口后再次启动，做一个集群。
+		启动服务消费者：service-consumer-feign
+		发送http://localhost:3002/hi?name=testAA，能看到会循环调用200x的请求
+
+
+spring-cloud-test03 //测试断路器hystrix
+	项目基于spring-cloud-test02改造
+	ribbon版：改造service-consumer-ribbon为service-consumer-ribbon-hystrix项目
+		需要引入hystrix包
+		发送http://localhost:3001/hi?name=testAA，当200x节点都宕机后，会调用fallback函数
+
+	feign版：改造service-consumer-feign为service-consumer-feign-hystrix项目
+		自带hystrix，需要再application.yml开启
+		发送http://localhost:3002/hi?name=testAA，当200x节点都宕机后，会调用fallback函数
+
+
+spring-cloud-test04 //测试网关zuul
+	项目基于spring-cloud-test03改造，新增service-zuul项目
+		ribbon版：http://localhost:4001/api-a/hi?name=testAA
+		feign版：http://localhost:4001/api-b/hi?name=testAA
+	自定义ZuulFilter：
+		http://localhost:4001/api-b/hi?name=testAA --校验不通过
+		http://localhost:4001/api-b/hi?name=testAA&token=222 --校验通过
+
+
+
+
