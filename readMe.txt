@@ -153,4 +153,33 @@ spring-cloud-test04 //测试网关zuul
 
 
 
+spring-cloud-test05 //测试配置中心(confug server)
+	ConfigServer端：
+		远程仓库https://github.com/yanjingyun/SpringCloudConfig/ 中有个文件config-client-dev.properties文件
+			foo = foo version 3
+		测试：http://localhost:8888/foo/dev
+	ConfigClient端：
+		测试：http://localhost:8881/hi，输出内容：foo version 3
+
+
+spring-cloud-test06 //高可用的分布式配置中心
+	项目基于spring-cloud-test05改造，新建eureka服务端，ConfigClient通过服务发现ConfigServer
+	测试：http://localhost:8881/hi，输出内容：foo version 3
+
+
+spring-cloud-test07 //消息总线Spring Cloud Bus
+	https://www.fangzhipeng.com/springcloud/2018/08/08/sc-f8-bus.html --未完成
+	依次启动eureka-server、confg-cserver，启动两个config-client，端口为：8881、8882
+	访问http://localhost:8881/hi 或者http://localhost:8882/hi 浏览器显示：foo version 3
+	
+	这时我们去代码仓库将foo的值改为“foo version 4”，即改变配置文件foo的值。如果是传统的做法，需要重启服务，才能达到配置文件的更新。此时，我们只需要发送post请求：http://localhost:8881/actuator/bus-refresh，你会发现config-client会重新读取配置文件
+	这时我们再访问http://localhost:8881/hi 或者http://localhost:8882/hi 浏览器显示：foo version 4
+
+	另外，/actuator/bus-refresh接口可以指定服务，即使用”destination”参数，比如 “/actuator/bus-refresh?destination=customers:**” 即刷新服务名为customers的所有服务。
+
+
+
+spring-cloud-test10 //测试网关gateway
+	依次启动eureka-server、service-provider01、service-provider01、service-gateway项目
+	测试：http://localhost:8082/demo/hi?name=1323
 

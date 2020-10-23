@@ -1,0 +1,29 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+      - id: service-hi
+        uri: lb://SERVICE-HI
+        predicates:
+          - Path=/demo/**
+        filters:
+          - StripPrefix=1
+          - RequestTime=true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
