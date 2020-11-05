@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: config-client
+  profiles:
+    #active: dev
+    active: prod
+  cloud:
+    config:
+      uri: http://localhost:2001
+      fail-fast: true

@@ -1,0 +1,14 @@
+# 注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+
+server:
+  port: 3001
+
+foo: config-client-prod
+
+user:
+  username: TestProd
+  age: 30

@@ -167,6 +167,15 @@ spring-cloud-test06 //高可用的分布式配置中心
 	测试：http://localhost:8881/hi，输出内容：foo version 3
 
 
+spring-cloud-test06-v2	//配置中心（native版本）
+	描述：
+		将ConfigClient中的端口号，注册中心等信息放在ConfigServer中，方便统一进行管理。
+		直接将配置文件放在ConfigServer中，然后ConfigClient得到配置文件并指定环境（如dev、prod等）
+	测试：先后启动：EurekaServer、ConfigServer、ConfigClient三个项目
+		http://localhost:3001/foo
+		http://localhost:3001/user
+
+
 spring-cloud-test07 //消息总线Spring Cloud Bus
 	https://www.fangzhipeng.com/springcloud/2018/08/08/sc-f8-bus.html --未完成
 	依次启动eureka-server、confg-cserver，启动两个config-client，端口为：8881、8882

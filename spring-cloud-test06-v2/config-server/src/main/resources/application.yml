@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+          
+          
+server:
+  port: 2001
+
+# 注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
