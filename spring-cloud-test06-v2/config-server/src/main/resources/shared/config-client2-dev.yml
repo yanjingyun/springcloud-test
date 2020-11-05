@@ -1,0 +1,14 @@
+# 注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+
+server:
+  port: 3002
+
+foo: config-client2-dev
+
+user:
+  username: Test2Dev
+  age: 40

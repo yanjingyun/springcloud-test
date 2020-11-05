@@ -171,9 +171,13 @@ spring-cloud-test06-v2	//配置中心（native版本）
 	描述：
 		将ConfigClient中的端口号，注册中心等信息放在ConfigServer中，方便统一进行管理。
 		直接将配置文件放在ConfigServer中，然后ConfigClient得到配置文件并指定环境（如dev、prod等）
-	测试：先后启动：EurekaServer、ConfigServer、ConfigClient三个项目
-		http://localhost:3001/foo
-		http://localhost:3001/user
+	测试：
+		--先后启动：EurekaServer、ConfigServer、ConfigClient三个项目
+		http://localhost:3001/foo	--ConfigClient读取config-client-*.yml文件的foo属性
+		http://localhost:3001/user 	--读取user属性
+		http://localhost:3002/foo	--ConfigClient2读取config-client2-*.yml文件的foo属性
+		http://localhost:3002/user 	--读取user属性
+
 
 
 spring-cloud-test07 //消息总线Spring Cloud Bus
