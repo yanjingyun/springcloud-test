@@ -1,20 +1,15 @@
-spring:
-  application:
-    name: config-server
-  profiles:
-    active: native
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: classpath:/shared
-          
-          
-server:
-  port: 2001
+# 端口号
+server.port: 2001
+# 服务名
+spring.application.name: config-server
 
 # 注册中心
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:1001/eureka/
+eureka.client.serviceUrl.defaultZone: http://localhost:1001/eureka/
+
+# 配置文件在本地
+spring.profiles.active: native
+# 配置文件的目录（src/main/resource的shared文件夹）
+# 注：shared下的文件命名格式为"客户端的spring.application.name + profile后缀"
+# 如：在shared下有个config-client-dev.yml文件，能够通过 http://localhost:2001/config-client/dev 进行访问
+spring.cloud.config.server.native.search-locations: classpath:/shared
+#spring.cloud.config.server.native.search-locations: D:/workspace/config-file

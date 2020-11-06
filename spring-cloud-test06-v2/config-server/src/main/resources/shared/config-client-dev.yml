@@ -1,14 +1,11 @@
+# 端口号
+server.port: 3001
+
 # 注册中心
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:1001/eureka/
+eureka.client.serviceUrl.defaultZone: http://localhost:1001/eureka/
 
-server:
-  port: 3001
-
+# 测试自定义配置信息
 foo: config-client-dev
-
 user:
   username: TestDev
   age: 23
