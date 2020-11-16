@@ -200,6 +200,16 @@ spring-cloud-test10 //测试网关gateway
 	用户的请求首先经过service-gateway，根据路径由gateway的predict去断言进到哪一个router，router经过各种过滤器处理后，最后路由到具体的业务服务，比如 service-hi。
 
 	依次启动eureka-server、service-provider01、service-provider01、service-gateway项目，service-hi为服务名
-	测试：http://localhost:8082/demo/hi?name=1323
+	测试：http://localhost:8082/demo/hi?name=1323  #会自动路由到service-hi服务的/hi路径中
 		spring.cloud.gateway.discovery.locator.enabled为true时可访问http://localhost:8082/service-hi/hi?name=1323
+
+
+spring-cloud-test10-v2 //测试网关gateway限流
+    步骤：
+        1.gaeway引入hystrix包
+        2.application.yml配置hystrix信息
+        3.新增降级处理类
+        4.service项目新建controller层方法（睡眠5秒）
+        5.测试：http://localhost:8082/demo/timeout #会调用降级处理类的处理方法
+
 
