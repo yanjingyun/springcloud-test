@@ -204,12 +204,18 @@ spring-cloud-test10 //测试网关gateway
 		spring.cloud.gateway.discovery.locator.enabled为true时可访问http://localhost:8082/service-hi/hi?name=1323
 
 
-spring-cloud-test10-v2 //测试网关gateway限流
-    步骤：
-        1.gaeway引入hystrix包
-        2.application.yml配置hystrix信息
-        3.新增降级处理类
-        4.service项目新建controller层方法（睡眠5秒）
-        5.测试：http://localhost:8082/demo/timeout #会调用降级处理类的处理方法
+spring-cloud-test10-v2 //测试网关gateway降级
+    --步骤：
+    1.gaeway引入hystrix包
+    2.application.yml配置hystrix信息
+    3.新增降级处理类
+    4.service项目新建controller层方法（睡眠5秒）
+    5.测试：http://localhost:8082/demo/timeout #会调用降级处理类的处理方法
+spring-cloud-test10-v3 //测试网关gateway限流
+    --步骤：
+    1.引入redis、限流包
+    2.新建限流配置类
+    3.添加限流配置信息(application.yml)
+    4.测试：多次刷新http://localhost:8082/demo/hi，总有几次会报429错误
 
 

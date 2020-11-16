@@ -4,14 +4,20 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/spring-cloud-test10/eureka-server/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v2/eureka-server/eureka-server (1).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v2/eureka-server/eureka-server (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/eureka-server/eureka-server (2).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/eureka-server/eureka-server (2).iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10/service-gateway/service-gateway.iml" filepath="$PROJECT_DIR$/spring-cloud-test10/service-gateway/service-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v2/service-gateway/service-gateway (1).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v2/service-gateway/service-gateway (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/service-gateway/service-gateway (2).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/service-gateway/service-gateway (2).iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10/service-provider01/service-provider01.iml" filepath="$PROJECT_DIR$/spring-cloud-test10/service-provider01/service-provider01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v2/service-provider01/service-provider01 (1).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v2/service-provider01/service-provider01 (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/service-provider01/service-provider01 (2).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/service-provider01/service-provider01 (2).iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10/service-provider02/service-provider02.iml" filepath="$PROJECT_DIR$/spring-cloud-test10/service-provider02/service-provider02.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v2/service-provider02/service-provider02 (1).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v2/service-provider02/service-provider02 (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/service-provider02/service-provider02 (2).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/service-provider02/service-provider02 (2).iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10/spring-cloud-test10.iml" filepath="$PROJECT_DIR$/spring-cloud-test10/spring-cloud-test10.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v2/spring-cloud-test10-v2.iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v2/spring-cloud-test10-v2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/spring-cloud-test10-v2 (2).iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/spring-cloud-test10-v2 (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/spring-cloud-test10-v3.iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/spring-cloud-test10-v3.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/springcloud-test.iml" filepath="$PROJECT_DIR$/.idea/springcloud-test.iml" />
     </modules>
   </component>
