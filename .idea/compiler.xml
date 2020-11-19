@@ -7,66 +7,37 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-gateway" />
-        <module name="service-provider02 (3)" />
         <module name="service-provider01" />
-        <module name="service-provider02 (1)" />
         <module name="service-provider02" />
-        <module name="service-provider02 (2)" />
-        <module name="eureka-server (3)" />
         <module name="eureka-server (1)" />
         <module name="eureka-server (2)" />
-        <module name="eureka-server" />
-        <module name="service-gateway (1)" />
-        <module name="service-provider01 (1)" />
-        <module name="service-provider01 (2)" />
-        <module name="service-gateway (2)" />
-        <module name="service-provider01 (3)" />
-        <module name="service-gateway (3)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="config-client" target="1.8" />
+      <module name="config-client2" target="1.8" />
+      <module name="config-server" target="1.8" />
       <module name="eureka-server" target="1.8" />
       <module name="eureka-server (1)" target="1.8" />
       <module name="eureka-server (2)" target="1.8" />
-      <module name="eureka-server (3)" target="1.8" />
       <module name="service-gateway" target="1.8" />
-      <module name="service-gateway (1)" target="1.8" />
-      <module name="service-gateway (2)" target="1.8" />
-      <module name="service-gateway (3)" target="1.8" />
       <module name="service-provider01" target="1.8" />
-      <module name="service-provider01 (1)" target="1.8" />
-      <module name="service-provider01 (2)" target="1.8" />
-      <module name="service-provider01 (3)" target="1.8" />
       <module name="service-provider02" target="1.8" />
-      <module name="service-provider02 (1)" target="1.8" />
-      <module name="service-provider02 (2)" target="1.8" />
-      <module name="service-provider02 (3)" target="1.8" />
-      <module name="spring-cloud-test10" target="1.8" />
-      <module name="spring-cloud-test10-v1" target="1.8" />
-      <module name="spring-cloud-test10-v2" target="1.8" />
-      <module name="spring-cloud-test10-v2 (1)" target="1.8" />
-      <module name="spring-cloud-test10-v2 (2)" target="1.8" />
+      <module name="spring-cloud-test06-v2" target="1.8" />
       <module name="spring-cloud-test10-v3" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-client" options="-parameters" />
+      <module name="config-client2" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server (1)" options="-parameters" />
       <module name="eureka-server (2)" options="-parameters" />
-      <module name="eureka-server (3)" options="-parameters" />
       <module name="service-gateway" options="-parameters" />
-      <module name="service-gateway (1)" options="-parameters" />
-      <module name="service-gateway (2)" options="-parameters" />
-      <module name="service-gateway (3)" options="-parameters" />
       <module name="service-provider01" options="-parameters" />
-      <module name="service-provider01 (1)" options="-parameters" />
-      <module name="service-provider01 (2)" options="-parameters" />
-      <module name="service-provider01 (3)" options="-parameters" />
       <module name="service-provider02" options="-parameters" />
-      <module name="service-provider02 (1)" options="-parameters" />
-      <module name="service-provider02 (2)" options="-parameters" />
-      <module name="service-provider02 (3)" options="-parameters" />
     </option>
   </component>
 </project>

@@ -185,7 +185,7 @@ spring-cloud-test06-v2	//配置中心（native版本）
 
 spring-cloud-test07 //消息总线Spring Cloud Bus
 	https://www.fangzhipeng.com/springcloud/2018/08/08/sc-f8-bus.html --未完成
-	依次启动eureka-server、confg-cserver，启动两个config-client，端口为：8881、8882
+	依次启动eureka-server、config-server，启动两个config-client，端口为：8881、8882
 	访问http://localhost:8881/hi 或者http://localhost:8882/hi 浏览器显示：foo version 3
 	
 	这时我们去代码仓库将foo的值改为“foo version 4”，即改变配置文件foo的值。如果是传统的做法，需要重启服务，才能达到配置文件的更新。此时，我们只需要发送post请求：http://localhost:8881/actuator/bus-refresh，你会发现config-client会重新读取配置文件
@@ -233,6 +233,6 @@ spring-cloud-test10-v3 //测试网关gateway限流
     1.引入redis、限流包
     2.新建限流配置类
     3.添加限流配置信息(application.yml)
-    4.测试：多次刷新http://localhost:8082/demo/hi，总有几次会报429错误
+    4.测试：多次刷新使用gateway内置令牌算法使用gateway内置令牌算法，总有几次会报429错误
 
 
