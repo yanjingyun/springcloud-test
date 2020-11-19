@@ -1,0 +1,31 @@
+# 端口号
+server.port: 8082
+# 服务名称
+spring.application.name: service-gateway
+# 注册中心
+eureka.client.service-url.defaultZone: http://localhost:1001/eureka/
+
+# Spring Cloud 执行器API是通过Actuator自定义控制器端点，他可以在网关已经启动的时候对网关的路径进行增删改操作
+management.endpoint.gateway.enabled: true
+management.endpoints.web.exposure.include: gateway
+
+## 方式一：采用服务ID建立路由
+#spring.cloud.gateway.discovery.locator.enabled: true #自动根据服务ID建立路由，路由的路径对应会使用大写ID
+#spring.cloud.gateway.discovery.locator.lowerCaseServiceId: true #将路由路径改成小写ID
+
+# 方式二：自定义路由方式
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: service-hi  # 路由id，保证唯一就行，常用服务名称
+        uri: lb://SERVICE-HI # 想要代理的路由接口，“lb:类型”表示从微服务注册中心（如eureka）订阅服务，并且进行服务的路由
+        predicates:
+          - Path=/demo/** # 断言：进行指定的路径路由，即发送http://localhost:8082/demo/hello，会转发到SERVICE-HI服务的hello中
+        filters:
+          # 过滤器StripPrefix，作用是去掉请求路径的最前面n个部分截取掉。StripPrefix=1就代表截取路径的个数为1。如/test/goods/1，匹配成功后后端的请求路径就会变成http://localhost:8888/good/1
+          - StripPrefix=1
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

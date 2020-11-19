@@ -1,32 +1,29 @@
-server:
-  port: 8082
+# 端口号
+server.port: 8082
+# 服务名称
+spring.application.name: service-gateway
+# 注册中心
+eureka.client.service-url.defaultZone: http://localhost:1001/eureka/
 
+
+## 方式一：采用服务ID建立路由
+#spring.cloud.gateway.discovery.locator.enabled: true #自动根据服务ID建立路由，路由的路径对应会使用大写ID
+#spring.cloud.gateway.discovery.locator.lowerCaseServiceId: true #将路由路径改成小写ID
+
+# 方式二：自定义路由方式
 spring:
-  application:
-    name: service-gateway
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: false
-          lowerCaseServiceId: true
       routes:
-      - id: service-hi
-        uri: lb://SERVICE-HI
-        # 在uri的schema协议部分为自定义的lb:类型，表示从微服务注册中心（如eureka）订阅服务，并且进行服务的路由
-        # 以/demo/*开头的请求都会转发到uri为lb://SERVICE-HI的地址上，即service-hi服务的负载均衡地址，并用StripPrefix的filter 在转发之前将/demo去掉。
-        # 同时将spring.cloud.gateway.discovery.locator.enabled改为false，如果不改的话，之前的localhost:8081/service-hi/hi?name=1323这样的请求地址也能正常访问，因为这时为每个服务创建了2个router。
-        predicates:
-          - Path=/demo/**
-        filters:
-          # 过滤器StripPrefix，作用是去掉请求路径的最前面n个部分截取掉。StripPrefix=1就代表截取路径的个数为1。如/test/goods/1，匹配成功后后端的请求路径就会变成http://localhost:8888/good/1
-          - StripPrefix=1
-          - RequestTime=true
+        - id: service-hi  # 路由id，保证唯一就行，常用服务名称
+          uri: lb://SERVICE-HI # 想要代理的路由接口，“lb:类型”表示从微服务注册中心（如eureka）订阅服务，并且进行服务的路由
+          predicates:
+            - Path=/demo/** # 断言：进行指定的路径路由，即发送http://localhost:8082/demo/hi，会转发到SERVICE-HI服务的hi中
+          filters:
+            # 过滤器StripPrefix，作用是去掉请求路径的最前面n个部分截取掉。StripPrefix=1就代表截取路径的个数为1。如/test/goods/1，匹配成功后后端的请求路径就会变成http://localhost:8888/good/1
+            - StripPrefix=1
+            - RequestTime=true
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:1001/eureka/
 
 logging:
   level:

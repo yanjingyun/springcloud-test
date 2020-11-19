@@ -203,6 +203,22 @@ spring-cloud-test10 //测试网关gateway
 	测试：http://localhost:8082/demo/hi?name=1323  #会自动路由到service-hi服务的/hi路径中
 		spring.cloud.gateway.discovery.locator.enabled为true时可访问http://localhost:8082/service-hi/hi?name=1323
 
+spring-cloud-test10-v1 //测试gateway三大法宝（路由route、断言predicate、过滤器filter）
+    测试路由：
+    整个actuator：1.引入jar包 2.配置文件新增management.endpoint配置信息
+        --详情参考GatewayControllerEndpoint.java文件
+        获取路由：   http://localhost:8082/actuator/gateway/routes
+        创建路由：   /actuator/gateway/routes/{id} post请求
+        删除路由：   /actuator/gateway/routes/{id} delete方式
+        刷新路由：   /actuator/gateway/refresh post方式
+
+    测试断言(predicate):
+        --参考配置文件的predicates属性相关，官网有11种断言
+    测试filter：
+        --注册到spring容器，实现GlobalFilter，Ordered接口
+        http://localhost:8082/demo/hello    --返回异常
+        http://localhost:8082/demo/hello?name=TestBB --能正常访问
+
 
 spring-cloud-test10-v2 //测试网关gateway降级
     --步骤：
@@ -211,6 +227,7 @@ spring-cloud-test10-v2 //测试网关gateway降级
     3.新增降级处理类
     4.service项目新建controller层方法（睡眠5秒）
     5.测试：http://localhost:8082/demo/timeout #会调用降级处理类的处理方法
+
 spring-cloud-test10-v3 //测试网关gateway限流
     --步骤：
     1.引入redis、限流包
