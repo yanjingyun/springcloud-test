@@ -1,0 +1,7 @@
+# 端口号
+server.port: 3001
+# 服务名
+spring.application.name: admin-server
+
+# 注册中心
+eureka.client.service-url.defaultZone: ${EUREKA_SERVICE_URL:http://localhost:1001}/eureka/

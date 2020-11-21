@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/service-gateway/service-gateway.iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/service-gateway/service-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/service-provider01/service-provider01.iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/service-provider01/service-provider01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/service-provider02/service-provider02.iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/service-provider02/service-provider02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-test06-v2/spring-cloud-test06-v2.iml" filepath="$PROJECT_DIR$/spring-cloud-test06-v2/spring-cloud-test06-v2.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-test10-v3/spring-cloud-test10-v3.iml" filepath="$PROJECT_DIR$/spring-cloud-test10-v3/spring-cloud-test10-v3.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/springcloud-test.iml" filepath="$PROJECT_DIR$/.idea/springcloud-test.iml" />
     </modules>

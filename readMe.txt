@@ -194,6 +194,10 @@ spring-cloud-test07 //消息总线Spring Cloud Bus
 	另外，/actuator/bus-refresh接口可以指定服务，即使用”destination”参数，比如 “/actuator/bus-refresh?destination=customers:**” 即刷新服务名为customers的所有服务。
 
 
+spring-cloud-test08 // 新增admin监控
+	依次运行eurekaServer、AdminClient、AdminServer项目，访问：http://localhost:3001/
+
+
 
 spring-cloud-test10 //测试网关gateway
 	Spring Cloud Gateway的Predict（断言）、Filter（过滤器）介绍。
