@@ -1,0 +1,191 @@
+{
+	"variables": [],
+	"info": {
+		"name": "spring-cloud-oauth",
+		"_postman_id": "df17e6ac-70ef-04da-3b44-722faf756cab",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "admin登录（密码模式获取JWT令牌）",
+			"request": {
+				"url": "http://localhost:3001/auth/oauth/token",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "client-app",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "通过JWT访问有权限资源",
+			"request": {
+				"url": "http://localhost:3001/api/hello",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJpZCI6MSwiZXhwIjoxNjA2MTQzNDY5LCJhdXRob3JpdGllcyI6WyJBRE1JTiJdLCJqdGkiOiIxMTU3ZjU3OC0xNWI0LTRmY2UtOTUyOS1jMzg0ZjlhZTRhMDciLCJjbGllbnRfaWQiOiJjbGllbnQtYXBwIn0.hxj6eohKxLsZNj8fJ9S1eOpULQDCARmAD6o_XzpKJ6ew3y1ZmcYJVXLLonSqGkIxscDuL_cxNsvlkrnsZUGHwjQixQ0usrBv2uTFsEHDPXPCAd61QYo8BeES9wRxnjAdOOND7VAWzSRtitsF-h7DNs9Uvp988UVEw5RXnUrjIBU",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "通过JWT获取当前用户信息",
+			"request": {
+				"url": "http://localhost:3001/api/user/currentUser",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJpZCI6MSwiZXhwIjoxNjA2MTQzNDY5LCJhdXRob3JpdGllcyI6WyJBRE1JTiJdLCJqdGkiOiIxMTU3ZjU3OC0xNWI0LTRmY2UtOTUyOS1jMzg0ZjlhZTRhMDciLCJjbGllbnRfaWQiOiJjbGllbnQtYXBwIn0.hxj6eohKxLsZNj8fJ9S1eOpULQDCARmAD6o_XzpKJ6ew3y1ZmcYJVXLLonSqGkIxscDuL_cxNsvlkrnsZUGHwjQixQ0usrBv2uTFsEHDPXPCAd61QYo8BeES9wRxnjAdOOND7VAWzSRtitsF-h7DNs9Uvp988UVEw5RXnUrjIBU",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "刷新JWT令牌",
+			"request": {
+				"url": "http://localhost:3001/auth/oauth/token",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "client-app",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJtYWNybyIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiIwZDk0NTViNi0zOGQzLTQzMTYtYjBkOS0xMTBhZTIwZGQxZTQiLCJpZCI6MSwiZXhwIjoxNjA2MjI1MTA5LCJhdXRob3JpdGllcyI6WyJBRE1JTiJdLCJqdGkiOiI0MDZjNmI1Ny1jNTFjLTRkNjQtYWMwMC03Yzk3MzJlNzAyY2YiLCJjbGllbnRfaWQiOiJjbGllbnQtYXBwIn0.VvtZt9oAhtH47oRXEd5PxoDc_srOci6k9XQ_5nlk4Ok359jwWayg3NccnK0B89b6AlopMTeKxAXroUiICQ5aXUDGKeI0C_5T-LARpskJrFBcl3t6mzYIsi1zzmncQd_8WQ-pFJJ96r8oiB77UQM4g3HaW-RMgw5kr7iVvYYUU2I",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "user登录（无访问权限）",
+			"request": {
+				"url": "http://localhost:3001/auth/oauth/token",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "client-app",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "user访问无权限资源",
+			"request": {
+				"url": "http://localhost:3001/api/hello",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhbmR5Iiwic2NvcGUiOlsiYWxsIl0sImlkIjoyLCJleHAiOjE2MDYxNDI4NTUsImF1dGhvcml0aWVzIjpbIlRFU1QiXSwianRpIjoiYjE4MjY0NWQtZjM2Mi00ZmU2LWIxNjgtNWExNjdjZjY2YjQxIiwiY2xpZW50X2lkIjoiY2xpZW50LWFwcCJ9.AINMVtEm7zXk8NCY6PvZalmB9qF-bIEs0eZdwLAApUXqskRy9-sFT4T30mrbzaR0GqdrsHhW6yRKXI5I9Nm7RVoIzPSyiWE5jvXS480b23FhG1SXD94pE1cEjQ44CsC16SjxAeNyVKpAITe0JqFK3Ni2aqBRZ6xeR2j3szd4Y6g",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

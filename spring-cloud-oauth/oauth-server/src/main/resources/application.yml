@@ -1,0 +1,23 @@
+#指定运行端口
+server.port: 2001
+#服务名称
+spring.application.name: oauth-server
+# 注册中心
+eureka.client.serviceUrl.defaultZone: http://localhost:1001/eureka/
+
+
+spring:
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  redis:
+    database: 0
+    port: 6379
+    host: localhost
+    password:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

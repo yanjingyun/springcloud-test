@@ -240,3 +240,8 @@ spring-cloud-test10-v3 //测试网关gateway限流
     4.测试：多次刷新使用gateway内置令牌算法使用gateway内置令牌算法，总有几次会报429错误
 
 
+
+
+spring-cloud-oauth	//spring cloud + spring security + oauth2 集成！！！
+	！！！
+

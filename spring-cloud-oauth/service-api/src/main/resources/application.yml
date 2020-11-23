@@ -1,0 +1,12 @@
+#指定运行端口
+server.port: 2002
+#服务名称
+spring.application.name: service-api
+# 注册中心
+eureka.client.serviceUrl.defaultZone: http://localhost:1001/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
