@@ -1,0 +1,11 @@
+server:
+  port: 10001
+  servlet:
+    context-path: /aub
+spring:
+  application:
+    name: service-user
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10000/eureka/

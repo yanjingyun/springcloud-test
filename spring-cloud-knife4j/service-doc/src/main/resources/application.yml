@@ -1,0 +1,37 @@
+server:
+  port: 10003
+spring:
+  application:
+    name: service-doc
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          #          enabled: true
+          lowerCaseServiceId: true
+      routes:
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/user/aub/**
+          #            - Header=Cookie,Set-Cookie
+          filters:
+            #- SwaggerHeaderFilter
+            - StripPrefix=1
+        - id:  service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/order/**
+          filters:
+            #- SwaggerHeaderFilter
+            - StripPrefix=1
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10000/eureka/
+
+logging:
+  level:
+    org.springframework:cloud.gateway: debug

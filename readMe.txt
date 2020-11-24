@@ -251,3 +251,9 @@ spring-cloud-oauth	//spring cloud + spring security + oauth2 统一认证和鉴�
 	3.自定义网关鉴权失败结果(ResourceServerConfig)
 	4.兼容白名单访问(IgnoreUrlsRemoveJwtFilter)
 
+
+spring-cloud-knife4j	// spring cloud gateway聚合所有swagger微服务文档
+	详情：https://doc.xiaominfo.com/guide/ui-front-gateway.html
+	
+	依次启动eureka-server、service-user、service-order、service-gateway服务
+	访问：http://localhost:10003/doc.html

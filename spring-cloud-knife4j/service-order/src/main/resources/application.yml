@@ -1,0 +1,9 @@
+server:
+  port: 10002
+spring:
+  application:
+    name: service-order
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10000/eureka/
