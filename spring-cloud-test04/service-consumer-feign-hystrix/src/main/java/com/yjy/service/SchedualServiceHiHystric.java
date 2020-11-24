@@ -1,4 +1,4 @@
-package com.yjy.service;
+package com.yjy.api.oauth.service;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.yjy.service;
+package com.yjy.api.oauth.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
