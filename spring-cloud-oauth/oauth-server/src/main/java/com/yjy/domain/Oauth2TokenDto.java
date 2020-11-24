@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Oauth2获取Token返回信息封装
- * Created by macro on 2020/7/17.
+ * 我们将需要的JWT信息封装成对象，然后放入到我们的CommonResult对象的data属性中
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

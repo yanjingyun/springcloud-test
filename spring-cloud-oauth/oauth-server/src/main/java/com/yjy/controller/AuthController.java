@@ -16,17 +16,19 @@ import java.util.Map;
 
 /**
  * 自定义Oauth2获取令牌接口
- * Created by macro on 2020/7/17.
+ * 自定义实现Oauth2默认的登录认证
  */
 @RestController
 @RequestMapping("/oauth")
 public class AuthController {
 
+    // 这是Oauth2的登录认证接口，我们只要重写这个登录认证接口，直接调用默认的实现逻辑，然后把默认的返回结果处理下即可
     @Autowired
     private TokenEndpoint tokenEndpoint;
 
     /**
-     * Oauth2登录认证
+     * 自定义Oauth2登录认证
+     * 测试参考：http://localhost:3001/auth/oauth/token
      */
     @RequestMapping(value = "/token", method = RequestMethod.POST)
     public CommonResult<Oauth2TokenDto> postAccessToken(Principal principal, @RequestParam Map<String, String> parameters) throws HttpRequestMethodNotSupportedException {

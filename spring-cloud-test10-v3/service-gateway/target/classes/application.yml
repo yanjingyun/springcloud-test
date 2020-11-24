@@ -1,0 +1,59 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+      - id: service-hi
+        uri: lb://SERVICE-HI
+        # 在uri的schema协议部分为自定义的lb:类型，表示从微服务注册中心（如eureka）订阅服务，并且进行服务的路由
+        # 以/demo/*开头的请求都会转发到uri为lb://SERVICE-HI的地址上，即service-hi服务的负载均衡地址，并用StripPrefix的filter 在转发之前将/demo去掉。
+        # 同时将spring.cloud.gateway.discovery.locator.enabled改为false，如果不改的话，之前的localhost:8081/service-hi/hi?name=1323这样的请求地址也能正常访问，因为这时为每个服务创建了2个router。
+        predicates:
+          - Path=/demo/**
+        filters:
+          # 过滤器StripPrefix，作用是去掉请求路径的最前面n个部分截取掉。StripPrefix=1就代表截取路径的个数为1。如/test/goods/1，匹配成功后后端的请求路径就会变成http://localhost:8888/good/1
+          - StripPrefix=1
+          # 过滤器Hystrix，作用是通过Hystrix进行熔断降级
+          - name: Hystrix
+            args:
+              name: default
+              fallbackUri: forward:/defaultfallback # 只有该id下的服务会降级
+          # 限流过滤器，使用gateway内置令牌算法
+          - name: RequestRateLimiter
+            args:
+              # 令牌桶每秒填充平均速率,即行等价于允许用户每秒处理多少个请求平均数
+              redis-rate-limiter.replenishRate: 1
+              # 令牌桶的容量，允许在一秒钟内完成的最大请求数
+              redis-rate-limiter.burstCapacity: 2
+              # 用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象
+              key-resolver: "#{@apiKeyResolver}"
+  redis:
+    host: 127.0.0.1
+    database: 0
+    lettuce:
+      pool:
+        max-active: 300
+        max-wait: -1s
+
+
+# hystrix 信号量隔离，1.5秒后自动超时
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 1500
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

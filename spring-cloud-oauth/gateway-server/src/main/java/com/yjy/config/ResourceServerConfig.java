@@ -39,10 +39,16 @@ public class ResourceServerConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.oauth2ResourceServer().jwt()
                 .jwtAuthenticationConverter(jwtAuthenticationConverter());
+
         //自定义处理JWT请求头过期或签名错误的结果
+        // 描述：当我们使用过期或签名不正确的JWT令牌访问需要权限的接口时，会直接返回状态码401，需要进行统一格式返回
         http.oauth2ResourceServer().authenticationEntryPoint(restAuthenticationEntryPoint);
+
         //对白名单路径，直接移除JWT请求头
+        // 描述：对于白名单接口一直有个问题，当携带过期或签名不正确的JWT令牌访问时，会直接返回token过期的结果；但这是个白名单接口，不过携带的token不对就不让访问了，显然有点不合理
+        // 处理：Oauth2默认的认证过滤器前面再加个过滤器，如果是白名单接口，直接移除认证头即可，首先定义好我们的过滤器
         http.addFilterBefore(ignoreUrlsRemoveJwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
+
         http.authorizeExchange()
                 .pathMatchers(ArrayUtil.toArray(ignoreUrlsConfig.getUrls(),String.class)).permitAll()//白名单配置
                 .anyExchange().access(authorizationManager)//鉴权管理器配置

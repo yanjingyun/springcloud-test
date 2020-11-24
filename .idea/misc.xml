@@ -13,6 +13,18 @@
         <option value="$PROJECT_DIR$/spring-cloud-test06-v2/config-client2/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-test06-v2/config-server/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-test06-v2/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10-v1/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10-v1/service-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10-v1/service-provider01/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10-v1/service-provider02/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10-v2/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10-v2/service-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10-v2/service-provider01/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10-v2/service-provider02/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10/service-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10/service-provider01/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-test10/service-provider02/pom.xml" />
       </set>
     </option>
   </component>

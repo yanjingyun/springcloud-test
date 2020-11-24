@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 全局处理Oauth2抛出的异常
- * Created by macro on 2020/7/17.
+ * Oauth2的登录认证的默认实现中，很多认证失败的操作都会直接抛出OAuth2Exception异常，可使用@ControllerAdvice处理
  */
 @ControllerAdvice
 public class Oauth2ExceptionHandler {
+
     @ResponseBody
     @ExceptionHandler(value = OAuth2Exception.class)
     public CommonResult handleOauth2(OAuth2Exception e) {

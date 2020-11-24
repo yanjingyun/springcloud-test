@@ -242,6 +242,12 @@ spring-cloud-test10-v3 //测试网关gateway限流
 
 
 
-spring-cloud-oauth	//spring cloud + spring security + oauth2 集成！！！
-	！！！
+spring-cloud-oauth	//spring cloud + spring security + oauth2 统一认证和鉴权
+	测试参考spring-cloud-oauth.postman_collection.json
+	
+	--详情：https://blog.csdn.net/zhenghongcs/article/details/107776948
+	1.自定义登录认证结果返回(AuthController)
+	2.认证失败结果返回(Oauth2ExceptionHandler)
+	3.自定义网关鉴权失败结果(ResourceServerConfig)
+	4.兼容白名单访问(IgnoreUrlsRemoveJwtFilter)
 
