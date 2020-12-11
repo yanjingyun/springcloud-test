@@ -209,12 +209,6 @@ spring-cloud-test10 //测试网关gateway
 
 spring-cloud-test10-v1 //测试gateway三大法宝（路由route、断言predicate、过滤器filter）
     测试路由：
-    整个actuator：1.引入jar包 2.配置文件新增management.endpoint配置信息
-        --详情参考GatewayControllerEndpoint.java文件
-        获取路由：   http://localhost:8082/actuator/gateway/routes
-        创建路由：   /actuator/gateway/routes/{id} post请求
-        删除路由：   /actuator/gateway/routes/{id} delete方式
-        刷新路由：   /actuator/gateway/refresh post方式
 
     测试断言(predicate):
         --参考配置文件的predicates属性相关，官网有11种断言
@@ -237,8 +231,20 @@ spring-cloud-test10-v3 //测试网关gateway限流
     1.引入redis、限流包
     2.新建限流配置类
     3.添加限流配置信息(application.yml)
-    4.测试：多次刷新使用gateway内置令牌算法使用gateway内置令牌算法，总有几次会报429错误
+    4.测试：
+    	http://localhost:8082/demo/hi --目前每秒产生2个令牌
+    	多次刷新使用gateway内置令牌算法使用gateway内置令牌算法，总有几次会报429错误
 
+
+spring-cloud-test10-v3 // 使用actuator实现动态路由
+	测试参考：gateway实现动态路由.postman_collection.json
+	整合actuator：1.引入jar包 2.配置文件新增management.endpoint配置信息
+		--详情参考GatewayControllerEndpoint.java文件
+		获取路由：   http://localhost:8082/actuator/gateway/routes
+		创建路由：   /actuator/gateway/routes/{id} post请求
+		删除路由：   /actuator/gateway/routes/{id} delete方式
+		刷新路由：   /actuator/gateway/refresh post方式
+	应用场景：设置动态路由，设置动态限流内容（需要更多测试用例）
 
 
 

@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "20382dcc-255f-408b-9650-8a7c45d4b737",
+		"name": "gateway实现动态路由",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "查询所有路由",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/actuator/gateway/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"actuator",
+						"gateway",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "根据id查询路由",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/actuator/gateway/routes/service-hi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"actuator",
+						"gateway",
+						"routes",
+						"service-hi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "测试路由是否生效",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/demo/hi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"demo",
+						"hi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "创建路由",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"service-hi\",\r\n    \"predicates\": [\r\n        {\r\n            \"name\": \"Path\",\r\n            \"args\": {\r\n                \"_genkey_0\": \"/demo2222/**\"\r\n            }\r\n        }\r\n    ],\r\n    \"filters\": [\r\n        {\r\n            \"name\": \"StripPrefix\",\r\n            \"args\": {\r\n                \"_genkey_0\": \"1\"\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Hystrix\",\r\n            \"args\": {\r\n                \"name\": \"default\",\r\n                \"fallbackUri\": \"forward:/defaultfallback\"\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"RequestRateLimiter\",\r\n            \"args\": {\r\n                \"redis-rate-limiter.replenishRate\": \"1\",\r\n                \"redis-rate-limiter.burstCapacity\": \"2\",\r\n                \"key-resolver\": \"#{@apiKeyResolver}\"\r\n            }\r\n        }\r\n    ],\r\n    \"uri\": \"lb://SERVICE-HI\",\r\n    \"order\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/actuator/gateway/routes/service-hi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"actuator",
+						"gateway",
+						"routes",
+						"service-hi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "测试新路由是否生效（限流也生效）",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/demo2222/hi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"demo2222",
+						"hi"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
