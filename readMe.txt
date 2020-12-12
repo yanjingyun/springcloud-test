@@ -236,15 +236,19 @@ spring-cloud-test10-v3 //测试网关gateway限流
     	多次刷新使用gateway内置令牌算法使用gateway内置令牌算法，总有几次会报429错误
 
 
-spring-cloud-test10-v3 // 使用actuator实现动态路由
-	测试参考：gateway实现动态路由.postman_collection.json
-	整合actuator：1.引入jar包 2.配置文件新增management.endpoint配置信息
+spring-cloud-test10-v4 // 使用actuator实现动态路由
+	整合actuator：
 		--详情参考GatewayControllerEndpoint.java文件
+		1.引入jar包 2.配置文件新增management.endpoint配置信息
 		获取路由：   http://localhost:8082/actuator/gateway/routes
 		创建路由：   /actuator/gateway/routes/{id} post请求
 		删除路由：   /actuator/gateway/routes/{id} delete方式
 		刷新路由：   /actuator/gateway/refresh post方式
+		测试参考：gateway实现动态路由.postman_collection.json
 	应用场景：设置动态路由，设置动态限流内容（需要更多测试用例）
+	
+	自定义监听事件(SystemEventListener)：
+		监听从eureka server获取心跳
 
 
 

@@ -1,4 +1,4 @@
-package com.yjy;
+package com.yjy.listener;
 
 import com.netflix.discovery.shared.Application;
 import com.netflix.discovery.shared.Applications;
@@ -14,13 +14,20 @@ import org.springframework.context.event.EventListener;
 
 import java.util.List;
 
+/**
+ * 监听事件
+ */
 @Configuration
-public class MyRunnable implements ApplicationRunner {
+public class SystemEventListener {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    /**
+     * 监听从eureka server获取心跳
+     * @param heartbeatEvent
+     */
     @EventListener(classes = HeartbeatEvent.class)
-    public void listenNacosEvent(ApplicationEvent heartbeatEvent) {
+    public void listenEurekaEvent(ApplicationEvent heartbeatEvent) {
         Object source = heartbeatEvent.getSource();
         CloudEurekaClient cloudEurekaClient = (CloudEurekaClient) source;
         Applications applications = cloudEurekaClient.getApplications();
@@ -28,10 +35,5 @@ public class MyRunnable implements ApplicationRunner {
         for (Application application: registeredApplications) {
             logger.info("服务上线:{}", application);
         }
-    }
-
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-
     }
 }

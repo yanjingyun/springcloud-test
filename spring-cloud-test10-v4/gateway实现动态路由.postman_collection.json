@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "20382dcc-255f-408b-9650-8a7c45d4b737",
+		"_postman_id": "b972b046-d74c-4fac-830c-f68493859bcd",
 		"name": "gateway实现动态路由",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,6 +10,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:8081/actuator/gateway/routes",
 					"protocol": "http",
@@ -27,6 +31,39 @@
 			"response": []
 		},
 		{
+			"name": "创建路由",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"service-hi\",\r\n    \"predicates\": [\r\n        {\r\n            \"name\": \"Path\",\r\n            \"args\": {\r\n                \"_genkey_0\": \"/demo/**\"\r\n            }\r\n        }\r\n    ],\r\n    \"filters\": [\r\n        {\r\n            \"name\": \"StripPrefix\",\r\n            \"args\": {\r\n                \"_genkey_0\": \"1\"\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Hystrix\",\r\n            \"args\": {\r\n                \"name\": \"default\",\r\n                \"fallbackUri\": \"forward:/defaultfallback\"\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"RequestRateLimiter\",\r\n            \"args\": {\r\n                \"redis-rate-limiter.replenishRate\": \"1\",\r\n                \"redis-rate-limiter.burstCapacity\": \"2\",\r\n                \"key-resolver\": \"#{@apiKeyResolver}\"\r\n            }\r\n        }\r\n    ],\r\n    \"uri\": \"lb://SERVICE-HI\",\r\n    \"order\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/actuator/gateway/routes/service-hi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"actuator",
+						"gateway",
+						"routes",
+						"service-hi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "根据id查询路由",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -36,12 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": ""
 				},
 				"url": {
 					"raw": "http://localhost:8081/actuator/gateway/routes/service-hi",
@@ -65,6 +97,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:8081/demo/hi",
 					"protocol": "http",
@@ -76,26 +112,29 @@
 						"demo",
 						"hi"
 					]
-				}
+				},
+				"description": "需要等一段时间才生效，测试了限流、降级等功能都生效了"
 			},
 			"response": []
 		},
 		{
-			"name": "创建路由",
+			"name": "创建路由2",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"service-hi\",\r\n    \"predicates\": [\r\n        {\r\n            \"name\": \"Path\",\r\n            \"args\": {\r\n                \"_genkey_0\": \"/demo2222/**\"\r\n            }\r\n        }\r\n    ],\r\n    \"filters\": [\r\n        {\r\n            \"name\": \"StripPrefix\",\r\n            \"args\": {\r\n                \"_genkey_0\": \"1\"\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Hystrix\",\r\n            \"args\": {\r\n                \"name\": \"default\",\r\n                \"fallbackUri\": \"forward:/defaultfallback\"\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"RequestRateLimiter\",\r\n            \"args\": {\r\n                \"redis-rate-limiter.replenishRate\": \"1\",\r\n                \"redis-rate-limiter.burstCapacity\": \"2\",\r\n                \"key-resolver\": \"#{@apiKeyResolver}\"\r\n            }\r\n        }\r\n    ],\r\n    \"uri\": \"lb://SERVICE-HI\",\r\n    \"order\": 0\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n    \"id\": \"my-service-hi\",\r\n    \"predicates\": [\r\n        {\r\n            \"name\": \"Path\",\r\n            \"args\": {\r\n                \"_genkey_0\": \"/my-demo/**\"\r\n            }\r\n        }\r\n    ],\r\n    \"filters\": [\r\n        {\r\n            \"name\": \"StripPrefix\",\r\n            \"args\": {\r\n                \"_genkey_0\": \"1\"\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Hystrix\",\r\n            \"args\": {\r\n                \"name\": \"default\",\r\n                \"fallbackUri\": \"forward:/defaultfallback\"\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"RequestRateLimiter\",\r\n            \"args\": {\r\n                \"redis-rate-limiter.replenishRate\": \"1\",\r\n                \"redis-rate-limiter.burstCapacity\": \"2\",\r\n                \"key-resolver\": \"#{@apiKeyResolver}\"\r\n            }\r\n        }\r\n    ],\r\n    \"uri\": \"lb://SERVICE-HI\",\r\n    \"order\": 0\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8081/actuator/gateway/routes/service-hi",
+					"raw": "http://localhost:8081/actuator/gateway/routes/my-service-hi",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -105,32 +144,35 @@
 						"actuator",
 						"gateway",
 						"routes",
-						"service-hi"
+						"my-service-hi"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "测试新路由是否生效（限流也生效）",
+			"name": "查看路由是否生效2",
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://localhost:8081/demo2222/hi",
+					"raw": "http://localhost:8081/my-demo/hi",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8081",
 					"path": [
-						"demo2222",
+						"my-demo",
 						"hi"
 					]
 				}
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
