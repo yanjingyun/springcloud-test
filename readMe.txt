@@ -120,6 +120,7 @@ spring-cloud-test01-v2 //测试eureka 注册中心集群
 	步骤：
 		1、eurekaServer01向eurekaServer02注册自己，eurekaServer02向eurekaServer01注册自己，这样便能做到注册中心集群。
 		2、eurekaClient 向所有 eurekaServer 注册
+		3、服务以“ip+端口”形式显示
 	测试：
 		依次启动 eureka-server、eureka-server02、service-provider01，能看到 注册中心存在两个服务
 		访问两个注册中心： 	http://localhost:1001/ 或 http://localhost:1002/
@@ -140,6 +141,14 @@ spring-cloud-test02 //测试服务调用
 		启动服务提供者：service-provider01，修改端口后再次启动，做一个集群。
 		启动服务消费者：service-consumer-feign
 		发送http://localhost:3002/hi?name=testAA，能看到会循环调用200x的请求
+
+spring-cloud-test02-v2 //测试服务调用(消费负载均衡)
+	ribbon版： 有三种实现服务消费方式
+		discoveryClient方式：		http://localhost:3001/hi1?name=user1
+		loadBalancerClient方式：		http://localhost:3001/hi2?name=user2
+		@LoadBalanced注解：			http://localhost:3001/hi3?name=user3
+	feign版：不变，跟 spring-cloud-test02 的一样，命名规则以 feign结尾（类似于Service层）
+
 
 
 spring-cloud-test03 //测试断路器hystrix

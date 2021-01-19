@@ -1,0 +1,13 @@
+server:
+  port: 3002
+spring:
+  application:
+    name: service-feign
+
+eureka:
+  instance:
+    prefer-ip-address: true #是否使用 ip 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
