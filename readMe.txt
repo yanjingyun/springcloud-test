@@ -116,6 +116,16 @@ spring-cloud-test01 //测试eureka的注册中心和服务注册功能
 	注册中心：http://localhost:1001/
 	服务提供方：http://localhost:2001/hi?name=testAA
 
+spring-cloud-test01-v2 //测试eureka 注册中心集群
+	步骤：
+		1、eurekaServer01向eurekaServer02注册自己，eurekaServer02向eurekaServer01注册自己，这样便能做到注册中心集群。
+		2、eurekaClient 向所有 eurekaServer 注册
+	测试：
+		依次启动 eureka-server、eureka-server02、service-provider01，能看到 注册中心存在两个服务
+		访问两个注册中心： 	http://localhost:1001/ 或 http://localhost:1002/
+		访问服务提供方： 		http://localhost:2001/hi?name=testAA
+
+
 
 spring-cloud-test02 //测试服务调用
 	项目基于spring-cloud-test01

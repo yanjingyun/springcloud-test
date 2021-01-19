@@ -1,0 +1,15 @@
+server:
+  port: 2001
+
+spring:
+  application:
+    name: service-provider #应用名称（集群下相同）
+
+eureka:
+  instance:
+    prefer-ip-address: true #是否使用 ip 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    # 配置注册中心地址
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/,http://localhost:1002/eureka/
