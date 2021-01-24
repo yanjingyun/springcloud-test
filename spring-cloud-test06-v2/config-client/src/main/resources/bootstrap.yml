@@ -1,3 +1,8 @@
+# 端口号
+server.port: 3001
+# 注册中心
+eureka.client.serviceUrl.defaultZone: http://localhost:1001/eureka/
+
 spring:
   application:
     name: config-client
@@ -6,5 +11,9 @@ spring:
     active: prod # 对应配置中心文件的${profile}部分
   cloud:
     config:
-      uri: http://localhost:2001
+#      uri: http://localhost:2001
+      # 配合eureka注册中心
+      discovery:
+        enabled: true  #默认false，设为true表示使用注册中心中的configserver配置，而不是自己配置configserver的uri
+        service-id: config-server  #指定config server在服务发现中的serviceId，默认为：configserver
       fail-fast: true

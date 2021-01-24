@@ -1,4 +1,4 @@
-package com.yjy.api.oauth.controller.vo;
+package com.yjy.controller.vo;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

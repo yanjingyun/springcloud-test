@@ -1,12 +1,11 @@
-package com.yjy.api.oauth.controller;
+package com.yjy.controller;
 
+import com.yjy.controller.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.yjy.api.oauth.controller.vo.User;
 
 @RefreshScope
 @RestController

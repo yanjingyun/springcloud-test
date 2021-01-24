@@ -200,6 +200,12 @@ spring-cloud-test06-v2	//配置中心（native版本）
 		http://localhost:3002/foo	--ConfigClient2读取config-client2-*.yml文件的foo属性
 		http://localhost:3002/user 	--读取user属性
 
+		--测试动态刷新配置（单节点）
+			1、config-client2添加actuator包，并添加actuator配置信息，在需要刷新的地方添加@RefreshScope注解
+			2、修改config-server里面的config-client2配置信息，并重启
+			3、config-client2节点发送(POST http://localhost:3002/actuator/refresh)请求，刷新配置信息(无需重启，做到刷新配置)
+			4、测试：关闭config-server服务，config-client2也没有影响
+
 
 
 spring-cloud-test07 //消息总线Spring Cloud Bus
