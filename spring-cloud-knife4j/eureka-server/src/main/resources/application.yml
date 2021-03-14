@@ -1,5 +1,5 @@
 #指定运行端口
-server.port: 10000
+server.port: 1001
 
 #服务名称
 spring.application.name: eureka-server
@@ -14,3 +14,10 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
     server:
       enable-self-preservation: false #关闭保护模式
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

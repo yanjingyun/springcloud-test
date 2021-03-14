@@ -292,3 +292,19 @@ spring-cloud-knife4j	// spring cloud gateway聚合所有swagger微服务文档
 	
 	依次启动eureka-server、service-user、service-order、service-gateway服务
 	访问：http://localhost:10003/doc.html
+
+
+
+spring-cloud-seata // 测试seata
+	springcloud-eureka-feign-mybatis-seata
+	测试1：http://localhost:8180/order/create?userId=1&productId=1&count=10&money=100
+	测试2：模拟account方法执行超时，全局回滚
+
+
+
+
+
+
+
+
+

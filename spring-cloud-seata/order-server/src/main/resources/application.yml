@@ -1,0 +1,36 @@
+eureka:
+    instance:
+        hostname: localhost
+        prefer-ip-address: true
+    client:
+        serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+feign:
+    hystrix:
+        enabled: false
+    client:
+        config:
+            default:
+                connectTimeout: 5000
+                readTimeout: 10000
+logging:
+    level:
+        com:
+            yjy: info
+mybatis:
+    mapperLocations: classpath:mapper/*.xml
+    typeAliasesPackage: com.yjy.sample.entity
+server:
+    port: 8180
+spring:
+    application:
+        name: order-server
+    cloud:
+        alibaba:
+            seata:
+                tx-service-group: my_test_tx_group
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql:///seat-order?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+        username: root
+        password: root
